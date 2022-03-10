@@ -1,0 +1,6 @@
+framework module Pods_Search_Pagination {
+  umbrella header "Pods-Search&Pagination-umbrella.h"
+
+  export *
+  module * { export * }
+}
