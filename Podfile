@@ -8,6 +8,7 @@ target 'Search&Pagination' do
   # Pods for Search&Pagination
   pod 'SnapKit', '~> 5.0.0'
   pod 'Alamofire', '~> 5.5'
+  pod 'PromiseKit', '~> 6.8'
 
 
   target 'Search&PaginationTests' do

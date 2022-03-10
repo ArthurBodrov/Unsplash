@@ -1,12 +1,22 @@
 PODS:
   - Alamofire (5.5.0)
   - Nimble (9.2.1)
+  - PromiseKit (6.17.0):
+    - PromiseKit/CorePromise (= 6.17.0)
+    - PromiseKit/Foundation (= 6.17.0)
+    - PromiseKit/UIKit (= 6.17.0)
+  - PromiseKit/CorePromise (6.17.0)
+  - PromiseKit/Foundation (6.17.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.17.0):
+    - PromiseKit/CorePromise
   - Quick (4.0.0)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.5)
   - Nimble
+  - PromiseKit (~> 6.8)
   - Quick
   - SnapKit (~> 5.0.0)
 
@@ -14,15 +24,17 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Nimble
+    - PromiseKit
     - Quick
     - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
+  PromiseKit: 996202d4cae72b7801b312abef4cd2f995b2978a
   Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 021498a7bee799f44656be95b255453a7c2e6a9e
+PODFILE CHECKSUM: 5ab8411db763d52b46c8c23fc33ac0c611d16329
 
 COCOAPODS: 1.11.2
