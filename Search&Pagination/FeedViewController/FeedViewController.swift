@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Alamofire
+import PromiseKit
 
 final class FeedViewController: UIViewController {
     // MARK: - Variables
@@ -32,14 +33,28 @@ final class FeedViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        provider.fetchPhotos { [weak self] photos, error  in
-            guard let photos = photos else { print(error); return }
+        firstly {
+            provider.fetchPhotos()
+        }.done { [weak self] photos in
             self?.photos = photos
-            DispatchQueue.main.async {
+//            DispatchQueue.main.async {
                self?.collectionView.reloadData()
                print("reloaded Data")
-           }
+//           }
+            return
+        }.catch { error in
+            print(error)
         }
+        
+        
+//        provider.fetchPhotos { [weak self] photos, error  in
+//            guard let photos = photos else { print(error); return }
+//            self?.photos = photos
+//            DispatchQueue.main.async {
+//               self?.collectionView.reloadData()
+//               print("reloaded Data")
+//           }
+//        }
 
         collectionView.delegate = self
         collectionView.dataSource = self

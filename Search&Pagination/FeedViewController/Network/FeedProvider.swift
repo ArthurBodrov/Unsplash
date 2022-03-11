@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PromiseKit
 
 final class FeedProvider {
     private let service: FeedService
@@ -16,16 +17,38 @@ final class FeedProvider {
         self.dataStore = dataStore
     }
     
-    public func fetchPhotos(handler: @escaping ([Photo]?, Error?) -> Void) {
-        guard dataStore.isEmpty else { handler(dataStore.get(), nil); return }
-
-        service.fetchPhotos { [weak self] photos, error in
-            if let photos = photos {
-                self?.dataStore.fulfill(photos: photos)
-                handler(photos, nil)
-            } else {
-                handler(nil, error)
-            }
+    // Guarantee<[Photo]>
+    public func fetchPhotos() -> Promise<[Photo]> {
+        return firstly {
+            service.fetchPhotos()
+        }.then { [weak self] photos -> Promise<[Photo]> in
+            self?.dataStore.fulfill(photos: photos)
+            return Promise.value(photos)
         }
+//        .catch { error in
+//            Promise<[Photo]>(error: error)
+//        }
+        
+        
+//        return service.fetchPhotos().done { photos in
+//            dataStore.fulfill(photos: photos)
+//        }.
+
+//        firstly {
+//            service.fetchPhotos()
+//        }.done {
+//            dataStore.fulfill(photos: $0)
+//        }
+//
+        
+        
+//        service.fetchPhotos { [weak self] photos, error in
+//            if let photos = photos {
+//                self?.dataStore.fulfill(photos: photos)
+//                handler(photos, nil)
+//            } else {
+//                handler(nil, error)
+//            }
+//        }
     }
 }

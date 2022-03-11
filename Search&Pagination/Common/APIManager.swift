@@ -7,8 +7,14 @@
 
 import Alamofire
 import Foundation
+import PromiseKit
 
 public final class APIManager {
+    // MARK: - Errors
+    enum APIManagerError: Error {
+        case dontHaveData
+    }
+    
     // MARK: - Variables
     private let session: Session
     
@@ -20,23 +26,24 @@ public final class APIManager {
     }
     
     // MARK: - Functions
-    
-    public func call<T>(endpoint: URLConstructor, params: Parameters? = nil, handler: @escaping ((T?, AFError?) -> Void)) {
-        self.session.request(
-            endpoint.fullUrlString,
-            method: endpoint.httpMethod,
-            parameters: params
-        ).validate().response { response in
-            switch response.result {
-            case .success(let value):
-                guard let data = value,
-                      let json = try? JSONSerialization.jsonObject(with: data, options: []) as? T
-                else { handler(nil, AFError.responseSerializationFailed(reason: .inputFileNil)); return }
-                handler(json, nil)
-            case .failure(_):
-                handler(nil, response.error)
+    // TODO: return completionHandler?
+    public func request<T>(endpoint: URLConstructor, params: Parameters? = nil) -> Promise<T> {
+        
+        // responseDecodable
+        return Promise<T> { seal in
+            self.session.request(
+                endpoint.fullUrlString,
+                method: endpoint.httpMethod,
+                parameters: params
+            ).validate().response { response in
+                switch response.result {
+                case .success(let value):
+                    guard let data = value as? T else { return seal.reject(APIManagerError.dontHaveData) }
+                    return seal.fulfill(data)
+                case .failure(let error):
+                    return seal.reject(error)
+                }
             }
         }
     }
-    
 }

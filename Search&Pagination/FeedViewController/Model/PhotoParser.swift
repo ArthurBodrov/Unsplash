@@ -15,7 +15,7 @@ class PhotoParser: Parser {
         case cantParse
     }
     
-    func parse(from dict: [String: Any]) throws -> Photo {
+    func parse(fromDict dict: [String: Any]) throws -> Photo {
         guard
             let urls = dict["urls"] as? [String: Any],
             let photoURLString = urls["regular"] as? String,
