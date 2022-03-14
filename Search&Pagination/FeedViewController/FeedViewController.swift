@@ -21,7 +21,7 @@ final class FeedViewController: UIViewController {
         return collectionView
     }()
     
-    lazy var provider = FeedProvider()
+    lazy var service = FeedService()
     
     // MARK: - Life Cycle
     
@@ -34,7 +34,7 @@ final class FeedViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         firstly {
-            provider.fetchPhotos()
+            service.fetchPhotos()
         }.done { [weak self] photos in
             self?.photos = photos
 //            DispatchQueue.main.async {

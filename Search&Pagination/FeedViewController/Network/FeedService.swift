@@ -24,27 +24,24 @@ final class FeedService {
     }
     
     
-    public func fetchPhotos() -> Promise<[Photo]> {
-        
-        let request: Promise<Data> = apiManager.request(endpoint: .photos, params: URLConstructor.defaultParams)
-        
+    public func fetchPhotos() -> [Photo] {
         firstly {
-            request
-        }.then { data -> Thenable[[String:Any]] in
-            let json = try JSONSerialization.jsonObject(with: data, options: []) as [[String:Any]]
-            return json
+            self.apiManager.request(endpoint: .photos, params: URLConstructor.defaultParams)
+             as Promise<[[String: Any]]>
         }
-//        .then { json -> [Photo] in
-//            return try self.photoParser.parse(fromArray: json)
-//        }
         
         
-        
-        
+
 //        return Promise { [weak self] seal in
+//
+//            firstly {
+//                self.apiManager.request(endpoint: .photos, params: URLConstructor.defaultParams)
+//                 as Promise<[[String: Any]]>
+//            }
+//
 //            guard
 //                let self = self,
-//                let result = self.apiManager.call(endpoint: .photos, params: URLConstructor.defaultParams)
+//                let result = self.apiManager.request(endpoint: .photos, params: URLConstructor.defaultParams)
 //                                                            as? Promise<[[String: Any]]>,
 //                let json = result.result
 //            else { return seal.reject(FeedServiceError.jsonParsingFailed) }
@@ -58,4 +55,3 @@ final class FeedService {
 //        }
     }
 }
-

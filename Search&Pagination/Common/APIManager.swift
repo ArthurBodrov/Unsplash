@@ -35,7 +35,7 @@ public final class APIManager {
                 endpoint.fullUrlString,
                 method: endpoint.httpMethod,
                 parameters: params
-            ).validate().response { response in
+            ).validate().responseJSON { response in
                 switch response.result {
                 case .success(let value):
                     guard let data = value as? T else { return seal.reject(APIManagerError.dontHaveData) }

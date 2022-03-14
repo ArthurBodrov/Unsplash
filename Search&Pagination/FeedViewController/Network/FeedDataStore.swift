@@ -6,17 +6,17 @@
 //
 
 import Foundation
-
-final class FeedDataStore {
-    private var store: [Photo] = []
-    
-    var isEmpty: Bool { store.isEmpty }
-    
-    public func fulfill(photos: [Photo]) {
-        store = photos
-    }
-    
-    public func get() -> [Photo] {
-        return store
-    }
-}
+//
+//final class FeedDataStore {
+//    private var store: [Photo] = []
+//    
+//    var isEmpty: Bool { store.isEmpty }
+//    
+//    public func fulfill(photos: [Photo]) {
+//        store = photos
+//    }
+//    
+//    public func get() -> [Photo] {
+//        return store
+//    }
+//}
