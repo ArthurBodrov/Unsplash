@@ -7,15 +7,16 @@
 
 import Foundation
 import Alamofire
+import PromiseKit
 
 
 final class FeedService {
     enum FeedServiceError: Error {
-        case photosParsingFailed
+        case parseError
     }
    
-    let apiManager: APIManager
-    let photoParser: PhotoParser
+    private let apiManager: APIManager
+    private let photoParser: PhotoParser
     
     init(apiManager: APIManager = APIManager.shared, photoParser: PhotoParser = PhotoParser()) {
         self.apiManager = apiManager
@@ -23,15 +24,43 @@ final class FeedService {
     }
     
     
-    public func fetchPhotos(handler: @escaping (([Photo]?, Error?) -> Void)) {
-        apiManager.call(endpoint: .photos, params: URLConstructor.defaultParams) { [weak self] (_ json: [[String: Any]]?, _ error: Error?)  in
-            if let json = json {
-                guard let photos: [Photo] = try? self?.photoParser.parse(from: json)
-                else { handler(nil, FeedServiceError.photosParsingFailed); return }
-                
-                handler(photos, nil)
-            } else {  handler(nil, error) }
+    public func fetchPhotos() -> Guarantee<Result<[Photo]>> {
+        return Guarantee { resolver in
+            firstly {
+                apiManager.request(endpoint: .photos, params: URLConstructor.defaultParams) as Promise<[[String: Any]]>
+            }.done { [weak self] array in
+                guard let photos = try self?.photoParser.parse(fromArray: array)
+                    else { return resolver(.rejected(FeedServiceError.parseError))}
+                resolver(.fulfilled(photos))
+            }.catch { error in
+                resolver(.rejected(error))
+            }
         }
+        
+        
+        
+        
+
+//        return Promise { [weak self] seal in
+//
+//            firstly {
+//                self.apiManager.request(endpoint: .photos, params: URLConstructor.defaultParams)
+//                 as Promise<[[String: Any]]>
+//            }
+//
+//            guard
+//                let self = self,
+//                let result = self.apiManager.request(endpoint: .photos, params: URLConstructor.defaultParams)
+//                                                            as? Promise<[[String: Any]]>,
+//                let json = result.result
+//            else { return seal.reject(FeedServiceError.jsonParsingFailed) }
+//
+//            switch json {
+//            case .fulfilled(let value):
+//                seal.fulfill(try self.photoParser.parse(fromArray: value))
+//            case .rejected(let error):
+//                seal.reject(error)
+//            }
+//        }
     }
 }
-
