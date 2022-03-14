@@ -72,7 +72,7 @@ final class FeedViewController: UIViewController {
     }
 }
 
-// Delegate & Data Source
+// MARK: - Delegate & Data Source
 extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
