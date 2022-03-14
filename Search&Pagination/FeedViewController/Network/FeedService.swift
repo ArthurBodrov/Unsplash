@@ -11,19 +11,22 @@ import PromiseKit
 
 
 final class FeedService {
+    // MARK: - Errors
     enum FeedServiceError: Error {
         case parseError
     }
    
+    // MARK: - Variables
     private let apiManager: APIManager
     private let photoParser: PhotoParser
     
+    // MARK: - Init
     init(apiManager: APIManager = APIManager.shared, photoParser: PhotoParser = PhotoParser()) {
         self.apiManager = apiManager
         self.photoParser = photoParser
     }
     
-    
+    // MARK: - Public Methods
     public func fetchPhotos() -> Guarantee<Result<[Photo]>> {
         return Guarantee { resolver in
             firstly {
@@ -36,31 +39,5 @@ final class FeedService {
                 resolver(.rejected(error))
             }
         }
-        
-        
-        
-        
-
-//        return Promise { [weak self] seal in
-//
-//            firstly {
-//                self.apiManager.request(endpoint: .photos, params: URLConstructor.defaultParams)
-//                 as Promise<[[String: Any]]>
-//            }
-//
-//            guard
-//                let self = self,
-//                let result = self.apiManager.request(endpoint: .photos, params: URLConstructor.defaultParams)
-//                                                            as? Promise<[[String: Any]]>,
-//                let json = result.result
-//            else { return seal.reject(FeedServiceError.jsonParsingFailed) }
-//
-//            switch json {
-//            case .fulfilled(let value):
-//                seal.fulfill(try self.photoParser.parse(fromArray: value))
-//            case .rejected(let error):
-//                seal.reject(error)
-//            }
-//        }
     }
 }

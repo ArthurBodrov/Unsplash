@@ -26,10 +26,7 @@ public final class APIManager {
     }
     
     // MARK: - Functions
-    // TODO: return completionHandler?
     public func request<T>(endpoint: URLConstructor, params: Parameters? = nil) -> Promise<T> {
-        
-        // responseDecodable
         return Promise<T> { seal in
             self.session.request(
                 endpoint.fullUrlString,

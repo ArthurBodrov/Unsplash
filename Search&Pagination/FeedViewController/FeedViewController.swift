@@ -26,7 +26,7 @@ final class FeedViewController: UIViewController {
         return loader
     }()
     
-    lazy var service = FeedService()
+    lazy var provider = FeedProvider()
     
     // MARK: - Life Cycle
     
@@ -61,7 +61,7 @@ final class FeedViewController: UIViewController {
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             guard let self = self else { return }
             firstly {
-                self.service.fetchPhotos()
+                self.provider.fetchPhotos()
             }.done { [weak self] photos in
                 switch photos {
                 case .fulfilled(let photos):
@@ -69,7 +69,6 @@ final class FeedViewController: UIViewController {
                     DispatchQueue.main.async { [weak self] in
                         self?.collectionView.reloadData()
                         self?.loader.stopAnimating()
-                        print("reloaded Data")
                     }
                 case .rejected(let error):
                     print(error)
@@ -85,7 +84,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedCollectionViewCell.identifier, for: indexPath) as? FeedCollectionViewCell
@@ -94,11 +93,11 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         return cell
     }
-    
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 400, height: 300)
     }

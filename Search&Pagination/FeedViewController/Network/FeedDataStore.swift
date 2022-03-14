@@ -8,12 +8,13 @@
 import Foundation
 
 final class FeedDataStore {
+    // MARK: - Variables
     private var store: [Photo] = []
+    public var isEmpty: Bool { store.isEmpty }
     
-    var isEmpty: Bool { store.isEmpty }
-    
+    // MARK: - Functions
     public func fulfill(photos: [Photo]) {
-        store = photos
+        store += photos
     }
     
     public func get() -> [Photo] {
