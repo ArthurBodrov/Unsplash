@@ -12,7 +12,7 @@ import PromiseKit
 
 final class FeedService {
     enum FeedServiceError: Error {
-        case jsonParsingFailed
+        case parseError
     }
    
     private let apiManager: APIManager
@@ -24,11 +24,20 @@ final class FeedService {
     }
     
     
-    public func fetchPhotos() -> [Photo] {
-        firstly {
-            self.apiManager.request(endpoint: .photos, params: URLConstructor.defaultParams)
-             as Promise<[[String: Any]]>
+    public func fetchPhotos() -> Guarantee<Result<[Photo]>> {
+        return Guarantee { resolver in
+            firstly {
+                apiManager.request(endpoint: .photos, params: URLConstructor.defaultParams) as Promise<[[String: Any]]>
+            }.done { [weak self] array in
+                guard let photos = try self?.photoParser.parse(fromArray: array)
+                    else { return resolver(.rejected(FeedServiceError.parseError))}
+                resolver(.fulfilled(photos))
+            }.catch { error in
+                resolver(.rejected(error))
+            }
         }
+        
+        
         
         
 

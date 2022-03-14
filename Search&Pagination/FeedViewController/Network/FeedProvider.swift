@@ -7,7 +7,7 @@
 
 import Foundation
 import PromiseKit
-//
+
 //final class FeedProvider {
 //    private let service: FeedService
 //    private let dataStore: FeedDataStore
@@ -18,16 +18,18 @@ import PromiseKit
 //    }
 //    
 //    // Guarantee<[Photo]>
-//    public func fetchPhotos() -> Promise<[Photo]> {
-//        return firstly {
-//            service.fetchPhotos()
-//        }.then { [weak self] photos -> Promise<[Photo]> in
-//            self?.dataStore.fulfill(photos: photos)
-//            return Promise.value(photos)
+//    public func fetchPhotos() -> Guarantee<Result<[Photo]>> {
+//        return Guarantee { resolver in
+//            firstly {
+//                service.fetchPhotos()
+//            }.then { [weak self] photos -> Promise<[Photo]> in
+//                self?.dataStore.fulfill(photos: photos)
+//                return Promise.value(photos)
+//            }.done { <#[Photo]#> in
+//                <#code#>
+//            }
 //        }
-////        .catch { error in
-////            Promise<[Photo]>(error: error)
-////        }
+//        
 //        
 //        
 ////        return service.fetchPhotos().done { photos in

@@ -31,19 +31,21 @@ final class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         firstly {
             service.fetchPhotos()
         }.done { [weak self] photos in
-            self?.photos = photos
-//            DispatchQueue.main.async {
-               self?.collectionView.reloadData()
-               print("reloaded Data")
-//           }
+            switch photos {
+            case .fulfilled(let photos):
+                self?.photos = photos
+                DispatchQueue.main.async {
+                   self?.collectionView.reloadData()
+                   print("reloaded Data")
+               }
+            case .rejected(let error):
+                print(error)
+            }
             return
-        }.catch { error in
-            print(error)
         }
         
         
