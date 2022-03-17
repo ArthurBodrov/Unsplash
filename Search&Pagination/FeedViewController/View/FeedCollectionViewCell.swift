@@ -25,7 +25,7 @@ final class FeedCollectionViewCell: UICollectionViewCell {
     
     private let userNameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .white
         return label
     }()
     
@@ -45,7 +45,8 @@ final class FeedCollectionViewCell: UICollectionViewCell {
             $0.size.equalToSuperview()
         }
         userNameLabel.snp.makeConstraints {
-            $0.right.bottom.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(4)
+            $0.left.equalToSuperview().inset(8)
         }
     }
     
