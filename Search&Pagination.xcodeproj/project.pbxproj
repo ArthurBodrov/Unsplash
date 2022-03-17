@@ -20,6 +20,7 @@
 		68A663C127E08F0B00C407CC /* AnyParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A663C027E08F0B00C407CC /* AnyParser.swift */; };
 		68A663C327E301B100C407CC /* FeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A663C227E301B100C407CC /* FeedInteractor.swift */; };
 		68A663C527E301CB00C407CC /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A663C427E301CB00C407CC /* FeedPresenter.swift */; };
+		68A663C727E3164900C407CC /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A663C627E3164900C407CC /* UIImage+Helper.swift */; };
 		68B16DF627D717BB005E7036 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B16DF527D717BB005E7036 /* AppDelegate.swift */; };
 		68B16DF827D717BB005E7036 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B16DF727D717BB005E7036 /* SceneDelegate.swift */; };
 		68B16DFA27D717BB005E7036 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B16DF927D717BB005E7036 /* FeedViewController.swift */; };
@@ -75,6 +76,7 @@
 		68A663C027E08F0B00C407CC /* AnyParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyParser.swift; sourceTree = "<group>"; };
 		68A663C227E301B100C407CC /* FeedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedInteractor.swift; sourceTree = "<group>"; };
 		68A663C427E301CB00C407CC /* FeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenter.swift; sourceTree = "<group>"; };
+		68A663C627E3164900C407CC /* UIImage+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
 		68B16DF227D717BB005E7036 /* Search&Pagination.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Search&Pagination.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68B16DF527D717BB005E7036 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68B16DF727D717BB005E7036 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				68ED0B1327D74A9D0006A503 /* Parser.swift */,
 				68ED0B1627D74B5D0006A503 /* APIManager.swift */,
+				68A663C627E3164900C407CC /* UIImage+Helper.swift */,
 				68A663C027E08F0B00C407CC /* AnyParser.swift */,
 				68ED0B2127D88FCA0006A503 /* URLConstructor.swift */,
 			);
@@ -523,6 +526,7 @@
 				68B16DFA27D717BB005E7036 /* FeedViewController.swift in Sources */,
 				6809E70F27D9CB1D00E7F33E /* FeedService.swift in Sources */,
 				68A663C527E301CB00C407CC /* FeedPresenter.swift in Sources */,
+				68A663C727E3164900C407CC /* UIImage+Helper.swift in Sources */,
 				68A663C327E301B100C407CC /* FeedInteractor.swift in Sources */,
 				68A663C127E08F0B00C407CC /* AnyParser.swift in Sources */,
 				68B16DF627D717BB005E7036 /* AppDelegate.swift in Sources */,

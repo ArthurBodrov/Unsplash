@@ -102,6 +102,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 400, height: 300)
+        let targetSize = CGSize(width: collectionView.contentSize.width, height: 600)
+        return viewModels[indexPath.row].image.scalePreservingAspectRatio(targetSize: targetSize)
     }
 }
