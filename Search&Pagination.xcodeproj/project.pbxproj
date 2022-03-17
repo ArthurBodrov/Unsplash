@@ -15,13 +15,16 @@
 		6809E71527D9D64500E7F33E /* FeedDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6809E71427D9D64500E7F33E /* FeedDataStore.swift */; };
 		6809E71627D9D64500E7F33E /* FeedDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6809E71427D9D64500E7F33E /* FeedDataStore.swift */; };
 		6822957927DB143B00C4312E /* FeedServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6822957827DB143B00C4312E /* FeedServiceTests.swift */; };
+		68A663BD27DF4EB200C407CC /* APIManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A663BC27DF4EB200C407CC /* APIManagerMock.swift */; };
+		68A663BF27DF51A200C407CC /* ParserMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A663BE27DF51A200C407CC /* ParserMock.swift */; };
+		68A663C127E08F0B00C407CC /* AnyParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A663C027E08F0B00C407CC /* AnyParser.swift */; };
+		68A663C327E301B100C407CC /* FeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A663C227E301B100C407CC /* FeedInteractor.swift */; };
+		68A663C527E301CB00C407CC /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A663C427E301CB00C407CC /* FeedPresenter.swift */; };
 		68B16DF627D717BB005E7036 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B16DF527D717BB005E7036 /* AppDelegate.swift */; };
 		68B16DF827D717BB005E7036 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B16DF727D717BB005E7036 /* SceneDelegate.swift */; };
 		68B16DFA27D717BB005E7036 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B16DF927D717BB005E7036 /* FeedViewController.swift */; };
-		68B16DFD27D717BB005E7036 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68B16DFB27D717BB005E7036 /* Main.storyboard */; };
 		68B16DFF27D717BC005E7036 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B16DFE27D717BC005E7036 /* Assets.xcassets */; };
 		68B16E0227D717BC005E7036 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68B16E0027D717BC005E7036 /* LaunchScreen.storyboard */; };
-		68B16E0D27D717BC005E7036 /* Search_PaginationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B16E0C27D717BC005E7036 /* Search_PaginationTests.swift */; };
 		68B16E1727D717BC005E7036 /* Search_PaginationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B16E1627D717BC005E7036 /* Search_PaginationUITests.swift */; };
 		68B16E1927D717BC005E7036 /* Search_PaginationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B16E1827D717BC005E7036 /* Search_PaginationUITestsLaunchTests.swift */; };
 		68ED0B0C27D72CDE0006A503 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ED0B0B27D72CDE0006A503 /* Photo.swift */; };
@@ -67,16 +70,19 @@
 		6809E71127D9D62800E7F33E /* FeedProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedProvider.swift; sourceTree = "<group>"; };
 		6809E71427D9D64500E7F33E /* FeedDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDataStore.swift; sourceTree = "<group>"; };
 		6822957827DB143B00C4312E /* FeedServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedServiceTests.swift; sourceTree = "<group>"; };
+		68A663BC27DF4EB200C407CC /* APIManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerMock.swift; sourceTree = "<group>"; };
+		68A663BE27DF51A200C407CC /* ParserMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserMock.swift; sourceTree = "<group>"; };
+		68A663C027E08F0B00C407CC /* AnyParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyParser.swift; sourceTree = "<group>"; };
+		68A663C227E301B100C407CC /* FeedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedInteractor.swift; sourceTree = "<group>"; };
+		68A663C427E301CB00C407CC /* FeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenter.swift; sourceTree = "<group>"; };
 		68B16DF227D717BB005E7036 /* Search&Pagination.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Search&Pagination.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68B16DF527D717BB005E7036 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68B16DF727D717BB005E7036 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		68B16DF927D717BB005E7036 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		68B16DFC27D717BB005E7036 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		68B16DFE27D717BC005E7036 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68B16E0127D717BC005E7036 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68B16E0327D717BC005E7036 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68B16E0827D717BC005E7036 /* Search&PaginationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Search&PaginationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		68B16E0C27D717BC005E7036 /* Search_PaginationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search_PaginationTests.swift; sourceTree = "<group>"; };
 		68B16E1227D717BC005E7036 /* Search&PaginationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Search&PaginationUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68B16E1627D717BC005E7036 /* Search_PaginationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search_PaginationUITests.swift; sourceTree = "<group>"; };
 		68B16E1827D717BC005E7036 /* Search_PaginationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search_PaginationUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -160,7 +166,6 @@
 				68B16DF527D717BB005E7036 /* AppDelegate.swift */,
 				68B16DF727D717BB005E7036 /* SceneDelegate.swift */,
 				68ED0B0A27D72CBE0006A503 /* FeedViewController */,
-				68B16DFB27D717BB005E7036 /* Main.storyboard */,
 				68B16DFE27D717BC005E7036 /* Assets.xcassets */,
 				68B16E0027D717BC005E7036 /* LaunchScreen.storyboard */,
 				68B16E0327D717BC005E7036 /* Info.plist */,
@@ -171,8 +176,9 @@
 		68B16E0B27D717BC005E7036 /* Search&PaginationTests */ = {
 			isa = PBXGroup;
 			children = (
-				68B16E0C27D717BC005E7036 /* Search_PaginationTests.swift */,
 				6822957827DB143B00C4312E /* FeedServiceTests.swift */,
+				68A663BC27DF4EB200C407CC /* APIManagerMock.swift */,
+				68A663BE27DF51A200C407CC /* ParserMock.swift */,
 			);
 			path = "Search&PaginationTests";
 			sourceTree = "<group>";
@@ -190,6 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				68B16DF927D717BB005E7036 /* FeedViewController.swift */,
+				68A663C227E301B100C407CC /* FeedInteractor.swift */,
+				68A663C427E301CB00C407CC /* FeedPresenter.swift */,
 				6809E70D27D9CB0C00E7F33E /* Network */,
 				68ED0B1927D86B1E0006A503 /* View */,
 				68ED0B1D27D887F40006A503 /* Model */,
@@ -202,6 +210,7 @@
 			children = (
 				68ED0B1327D74A9D0006A503 /* Parser.swift */,
 				68ED0B1627D74B5D0006A503 /* APIManager.swift */,
+				68A663C027E08F0B00C407CC /* AnyParser.swift */,
 				68ED0B2127D88FCA0006A503 /* URLConstructor.swift */,
 			);
 			path = Common;
@@ -359,7 +368,6 @@
 			files = (
 				68B16E0227D717BC005E7036 /* LaunchScreen.storyboard in Resources */,
 				68B16DFF27D717BC005E7036 /* Assets.xcassets in Resources */,
-				68B16DFD27D717BB005E7036 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +522,9 @@
 				68ED0B1727D74B5D0006A503 /* APIManager.swift in Sources */,
 				68B16DFA27D717BB005E7036 /* FeedViewController.swift in Sources */,
 				6809E70F27D9CB1D00E7F33E /* FeedService.swift in Sources */,
+				68A663C527E301CB00C407CC /* FeedPresenter.swift in Sources */,
+				68A663C327E301B100C407CC /* FeedInteractor.swift in Sources */,
+				68A663C127E08F0B00C407CC /* AnyParser.swift in Sources */,
 				68B16DF627D717BB005E7036 /* AppDelegate.swift in Sources */,
 				68B16DF827D717BB005E7036 /* SceneDelegate.swift in Sources */,
 			);
@@ -526,6 +537,8 @@
 				68ED0B2327D88FCA0006A503 /* URLConstructor.swift in Sources */,
 				68ED0B1827D74B5D0006A503 /* APIManager.swift in Sources */,
 				68ED0B0D27D72CDE0006A503 /* Photo.swift in Sources */,
+				68A663BD27DF4EB200C407CC /* APIManagerMock.swift in Sources */,
+				68A663BF27DF51A200C407CC /* ParserMock.swift in Sources */,
 				68ED0B1127D73DFF0006A503 /* PhotoParser.swift in Sources */,
 				68ED0B1527D74A9D0006A503 /* Parser.swift in Sources */,
 				6822957927DB143B00C4312E /* FeedServiceTests.swift in Sources */,
@@ -533,7 +546,6 @@
 				6809E71327D9D62800E7F33E /* FeedProvider.swift in Sources */,
 				68ED0B0E27D72CE30006A503 /* FeedViewController.swift in Sources */,
 				68ED0B1C27D86B3A0006A503 /* FeedCollectionViewCell.swift in Sources */,
-				68B16E0D27D717BC005E7036 /* Search_PaginationTests.swift in Sources */,
 				6809E71627D9D64500E7F33E /* FeedDataStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,14 +575,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		68B16DFB27D717BB005E7036 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				68B16DFC27D717BB005E7036 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		68B16E0027D717BC005E7036 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -711,7 +715,6 @@
 				INFOPLIST_FILE = "Search&Pagination/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -740,7 +743,6 @@
 				INFOPLIST_FILE = "Search&Pagination/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

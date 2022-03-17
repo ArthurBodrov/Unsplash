@@ -8,8 +8,13 @@
 import Foundation
 import UIKit
 
-class PhotoParser: Parser {
-    /// TO DO: Make Enums static keys
+final class PhotoParser: Parser {
+    enum PhotoParserKeys: String {
+        case urls
+        case regular
+        case user
+        case username
+    }
     
     enum PhotoError: Error {
         case cantParse
@@ -17,15 +22,12 @@ class PhotoParser: Parser {
     
     func parse(fromDict dict: [String: Any]) throws -> Photo {
         guard
-            let urls = dict["urls"] as? [String: Any],
-            let photoURLString = urls["regular"] as? String,
-            let photoURL = URL(string: photoURLString),
-            let photoData = try? Data(contentsOf: photoURL),
-            let photo = UIImage(data: photoData),
-            let user = dict["user"] as? [String: Any],
-            let username = user["username"] as? String
+            let urls = dict[PhotoParserKeys.urls.rawValue] as? [String: Any],
+            let photoURLString = urls[PhotoParserKeys.regular.rawValue] as? String,
+            let user = dict[PhotoParserKeys.user.rawValue] as? [String: Any],
+            let username = user[PhotoParserKeys.username.rawValue] as? String
         else { throw PhotoError.cantParse }
 
-        return Photo(photo: photo, username: username)
+        return Photo(photoURLString: photoURLString, username: username)
     }
 }

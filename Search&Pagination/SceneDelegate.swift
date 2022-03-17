@@ -18,7 +18,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
-        window.rootViewController = FeedViewController()
+        let provider = FeedProvider()
+        let presenter = FeedPresenter()
+        let interactor = FeedInteractor(provider: provider, presenter: presenter)
+        let viewController = FeedViewController(interactor: interactor)
+        presenter.setViewController(viewController)
+        window.rootViewController = viewController
         self.window = window
         window.makeKeyAndVisible()
         

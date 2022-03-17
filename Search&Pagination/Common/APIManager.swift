@@ -9,7 +9,7 @@ import Alamofire
 import Foundation
 import PromiseKit
 
-public final class APIManager {
+public class APIManager {
     // MARK: - Errors
     enum APIManagerError: Error {
         case dontHaveData

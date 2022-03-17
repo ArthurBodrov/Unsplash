@@ -14,5 +14,5 @@ protocol Parser {
 }
 
 extension Parser {
-    func parse(fromArray array: [[String: Any]]) throws -> [Model] { return try array.map { try parse(fromDict: $0) } }
+    func parse(fromArray array: [[String: Any]]) throws -> [Model] { try array.map { try parse(fromDict: $0) } }
 }

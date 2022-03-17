@@ -9,7 +9,6 @@ import Foundation
 import Alamofire
 import PromiseKit
 
-
 final class FeedService {
     // MARK: - Errors
     enum FeedServiceError: Error {
@@ -18,10 +17,10 @@ final class FeedService {
    
     // MARK: - Variables
     private let apiManager: APIManager
-    private let photoParser: PhotoParser
+    private let photoParser: AnyParser<Photo>
     
     // MARK: - Init
-    init(apiManager: APIManager = APIManager.shared, photoParser: PhotoParser = PhotoParser()) {
+    init(apiManager: APIManager = APIManager.shared, photoParser: AnyParser<Photo> = AnyParser(PhotoParser())) {
         self.apiManager = apiManager
         self.photoParser = photoParser
     }

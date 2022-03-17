@@ -8,6 +8,11 @@
 import UIKit
 import SnapKit
 
+public struct FeedCollectionViewModel {
+    let username: String
+    let image: UIImage
+}
+
 final class FeedCollectionViewCell: UICollectionViewCell {
     static let identifier = "FeedCollectionViewCell"
     
@@ -44,9 +49,9 @@ final class FeedCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func setupCell(with photo: Photo) {
-        userNameLabel.text = photo.username
-        imageView.image = photo.photo
+    public func setupCell(with viewModel: FeedCollectionViewModel) {
+        userNameLabel.text = viewModel.username
+        imageView.image = viewModel.image
     }
 
     required init?(coder: NSCoder) {

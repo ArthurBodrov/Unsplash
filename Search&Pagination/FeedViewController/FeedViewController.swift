@@ -11,8 +11,9 @@ import Alamofire
 import PromiseKit
 
 final class FeedViewController: UIViewController {
+
     // MARK: - Variables
-    private var photos: [Photo] = []
+    private var viewModels: [FeedCollectionViewModel] = []
     
     private lazy var collectionView: UICollectionView = {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -26,9 +27,18 @@ final class FeedViewController: UIViewController {
         return loader
     }()
     
-    lazy var provider = FeedProvider()
-    
+    unowned let interactor: FeedInteractor
+
     // MARK: - Life Cycle
+    
+    init(interactor: FeedInteractor) {
+        self.interactor = interactor
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         view = collectionView
@@ -43,7 +53,7 @@ final class FeedViewController: UIViewController {
         collectionView.dataSource = self
         
         loader.startAnimating()
-        displayPhotos()
+        interactor.fetchPhotos()
     }
     
     // MARK: - Private func
@@ -57,39 +67,32 @@ final class FeedViewController: UIViewController {
         }
     }
     
-    private func displayPhotos() {
-        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-            guard let self = self else { return }
-            firstly {
-                self.provider.fetchPhotos()
-            }.done { [weak self] photos in
-                switch photos {
-                case .fulfilled(let photos):
-                    self?.photos = photos
-                    DispatchQueue.main.async { [weak self] in
-                        self?.collectionView.reloadData()
-                        self?.loader.stopAnimating()
-                    }
-                case .rejected(let error):
-                    print(error)
-                }
-                return
-            }
+    // MARK: - Public functions
+    public func displayPhotos(_ viewModels: [FeedCollectionViewModel]) {
+        self.viewModels = viewModels
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
+            self?.loader.stopAnimating()
         }
+    }
+    
+    public func displayError(_ error: Error) {
+        print(error)
     }
 }
 
 // MARK: - Delegate & Data Source
 extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
+        return viewModels.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedCollectionViewCell.identifier, for: indexPath) as? FeedCollectionViewCell
         else { return UICollectionViewCell() }
-        cell.setupCell(with: photos[indexPath.row])
+        cell.setupCell(with: viewModels[indexPath.row])
         
         return cell
     }
